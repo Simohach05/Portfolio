@@ -1,9 +1,12 @@
+import { useState } from 'react';
 import './header.css';
-
 const Header = ()=>{
+    const [showModal,setshowModal]= useState(false);
     return  (
         <header className=" flex">
-         <button className="Menu">Show</button>
+         <button onClick={() =>{
+            setshowModal(true)
+         }} className="Menu">Show</button>
          <div/>
             
          <nav>
@@ -17,21 +20,21 @@ const Header = ()=>{
 
           <button>light</button>
 
-
-
-          <div className="fixed">
-            
+           {showModal && (
+            <div className="fixed">
               <ul className="modal">
+                <li><bitton onClick={ ()=> {
+                    setshowModal(false)
+                }}>close</bitton></li>
                   <li><a href="">About</a></li>
                   <li><a href="">Projects</a></li>
                   <li><a href="">Speaking</a></li>
                   <li><a href="">Contact</a></li>
-             </ul>
-
-          </div>
-         
+              </ul>
+            </div>
+           )}
 
         </header>
-    );
+      );
 };
 export default Header;
